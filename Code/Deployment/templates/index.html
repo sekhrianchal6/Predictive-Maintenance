@@ -3,41 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image and Line Graph</title>
+    <title>Predictive Maintenace of NASA Aircraft Engine</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Image and Line Graph</h1>
+    <h1 style="width: 100%;text-align: center;">Predictive Maintenace of NASA Aircraft Engine</h1>
 
-    <h2>Image</h2>
-    <img src="{{ url_for('static', filename='turbofancolor.png') }}" alt="Your Image" style="width: 300px; height: auto;">
+    <h2>Turbo Engine</h2>
+    <img src="{{ url_for('static', filename='turbofan.png') }}" alt="Your Image" style="width: 300px; height: auto;">
 
-    <h2>Line Graph</h2>
-    <canvas id="lineChart" width="400" height="200"></canvas>
+    <p>The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
+maintenance behavior, this machine learning research will be focused on providing a framework for predicting the aircraft's remaining usable life (RUL) based on the whole life 
+cycle data. Using the NASA C-MAPSS data set is implemented and tested to determine the engine lifetime.
 
-    <script>
-        // Get the data passed from Flask
-        const labels = {{ labels | safe }};
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Sample Data',
-                backgroundColor: 'rgb(75, 192, 192)',
-                borderColor: 'rgb(75, 192, 192)',
-                data: {{ data | safe }},
-            }]
-        };
+Tracking and predicting the progression of damage in aircraft engine turbo machinery has some roots in the work of Kurosaki. They estimate the efficiency and the flow rate deviation
+of the compressor and the turbine based on operational data, and utilize this information for fault detection purposes.
+ 
+A low pressure compressor (LPC) and high pressure compressor (HPC) supply compressed high temperature, high pressure gases to the combustor. Low pressure turbine (LPT) can 
+decelerate and pressurize air to improve the chemical energy conversion efficiency of aviation kerosene. High pressure turbines (HPT) generate mechanical energy by using high 
+temperature and high pressure gas strike turbine blades. Low-pressure rotor (N1), high-pressure rotor (N2), and nozzle guarantee the combustion efficiency of the engine.
 
-        const config = {
-            type: 'line',
-            data: data,
-            options: {}
-        };
+Our main focus will be on accurately recording low RUL values to prevent putting the engine at danger and forecasting the RUL of the turbofan engine while accounting for HPC 
+failure. Data analysis, data visualization and Model development are covered in this project</p>
 
-        var myChart = new Chart(
-            document.getElementById('lineChart'),
-            config
-        );
-    </script>
 </body>
 </html>
