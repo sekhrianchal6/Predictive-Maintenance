@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template_string, send_file, render_template
 import os
 import pickle
 import numpy as np
@@ -18,10 +18,6 @@ inp_data = data.dropna()
 
 def preprocess(data):
     # Exponential Weighted Mean on Test Data
-    data = data.drop(['Sensor1', 'Sensor2', 'Sensor3', 'Sensor4', 'Sensor8','Sensor9', 'Sensor13', 'Sensor19', 'Sensor21', 'Sensor22'], axis=1)
-    ewm_data = data.ewm(10).mean()
-    scaled_data = scaler.transform(ewm_data)
-    pca_data = pca.transform(scaled_data)
     data = data.drop(['Sensor1', 'Sensor2', 'Sensor3', 'Sensor4', 'Sensor5', 'Sensor6', 'Sensor8','Sensor9', 'Sensor13', 'Sensor19', 'Sensor21', 'Sensor22', 'Sensor24'], axis=1)
     ewm_data = data.ewm(10).mean()
     scaled_data = scaler.transform(ewm_data)
@@ -85,28 +81,31 @@ def handle_buttons():
         test_data = np.expand_dims(test_data, axis=0)
         pred = model.predict(test_data)
         print(pred)
-        plot_line()
-        return render_template_string('''
-            <h1>Prediction Feature</h1>
-            <p>This is where the prediction logic will go. {{ pred }}</p>
-            <form action="/">
-                <button type="submit">Go Back</button>
-            </form>
-        ''')
+        labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+        data = [65, 59, 80, 81, 56, 55, 40]
+        return render_template('index.html', labels=labels, data=data)
+ #       plot_line()
+        # return render_template_string('''
+        #     <h1>Prediction Feature</h1>
+        #     <p>This is where the prediction logic will go. {{ pred }}</p>
+        #     <form action="/">
+        #         <button type="submit">Go Back</button>
+        #     </form>
+        # ''')
 
-def plot_line():
-    a = np.ones(10)
-    plt.figure()
-    df.plot(a)
-    plt.xlabel('Index')
-    plt.ylabel('Values')
-    plt.title('Line Plot')
+#def plot_line():
+    # a = np.ones(10)
+    # plt.figure()
+    # plt.plot(a)
+    # plt.xlabel('Index')
+    # plt.ylabel('Values')
+    # plt.title('Line Plot')
 
-    img = io.BytesIO()
-    plt.savefig(img, format='png')
-    img.seek(0)
-    plt.close()
-    return send_file(img, mimetype='image/png')
+    # img = io.BytesIO()
+    # plt.savefig(img, format='png')
+    # img.seek(0)
+    # plt.close()
+    # return send_file(img, mimetype='image/png')
 
 if __name__ == '__main__':
     app.run(debug=True)

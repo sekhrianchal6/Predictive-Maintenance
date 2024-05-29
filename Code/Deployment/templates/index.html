@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Line Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Image and Line Graph</h1>
+
+    <h2>Image</h2>
+    <img src="{{ url_for('static', filename='turbofancolor.png') }}" alt="Your Image" style="width: 300px; height: auto;">
+
+    <h2>Line Graph</h2>
+    <canvas id="lineChart" width="400" height="200"></canvas>
+
+    <script>
+        // Get the data passed from Flask
+        const labels = {{ labels | safe }};
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Sample Data',
+                backgroundColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(75, 192, 192)',
+                data: {{ data | safe }},
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        var myChart = new Chart(
+            document.getElementById('lineChart'),
+            config
+        );
+    </script>
+</body>
+</html>
