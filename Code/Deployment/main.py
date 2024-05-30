@@ -34,10 +34,9 @@ def preprocess(data):
 def index():
     return '''
         <h1 style="width: 100%;text-align: center;">Predictive Maintenace of NASA Aircraft Engine</h1>
-        <h2>Turbo Engine</h2>
-        <img src="{{ url_for('static', filename='turbofan.png') }}" alt="Your Image" style="width: 300px; height: auto;">
+        <img src="./static/turbofan.png" alt="Your Image" style="height: auto;">
 
-        <p>The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
+        <p style="font-size: 18px">The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
 maintenance behavior, this machine learning research will be focused on providing a framework for predicting the aircraft's remaining usable life (RUL) based on the whole life 
 cycle data. Using the NASA C-MAPSS data set is implemented and tested to determine the engine lifetime.
 
@@ -52,7 +51,17 @@ Our main focus will be on accurately recording low RUL values to prevent putting
 failure. Data analysis, data visualization and Model development are covered in this project</p>
         
         <form method="post" action="/handle_buttons">
-            <button type="submit" name="action" value="predict">Predict</button>
+            <button type="submit" name="action" value="predict" style="position: absolute;
+    top: 300px;  right: 500px;
+    width: 180px;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;">Predict RUL</button>
         </form>
     '''
 
