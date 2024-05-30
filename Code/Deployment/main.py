@@ -15,7 +15,7 @@ model4 = pickle.load(open('CNN_LSTM.pkl', 'rb'))
 
 scaler = pickle.load(open('scaler.sav', 'rb'))
 pca = pickle.load(open('pca.sav', 'rb'))
-data = pd.read_csv(r'C:/Users/Muthukumar/Documents/pyNotebooks/PredMaintenance/Deployment/Modified_Raw.csv')
+data = pd.read_csv('Modified_Raw.csv')
 # Transform data for LSTM Model
 inp_data = data.dropna()
 
