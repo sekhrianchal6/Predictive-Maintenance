@@ -6,8 +6,12 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import io
 import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = Flask(__name__)
+
 model = pickle.load(open('lstm.pkl', 'rb'))
 model2 = pickle.load(open('mlp_clipped_model.pkl', 'rb'))
 model3 = pickle.load(open('xgb_clipped_model.pkl', 'rb'))
@@ -32,38 +36,7 @@ def preprocess(data):
     
 @app.route('/')
 def index():
-    return '''
-        <h1 style="width: 100%;text-align: center;">Predictive Maintenace of NASA Aircraft Engine</h1>
-        <img src="./static/turbofan.png" alt="Your Image" style="height: auto;">
-
-        <p style="font-size: 18px">The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
-maintenance behavior, this machine learning research will be focused on providing a framework for predicting the aircraft's remaining usable life (RUL) based on the whole life 
-cycle data. Using the NASA C-MAPSS data set is implemented and tested to determine the engine lifetime.
-
-Tracking and predicting the progression of damage in aircraft engine turbo machinery has some roots in the work of Kurosaki. They estimate the efficiency and the flow rate deviation
-of the compressor and the turbine based on operational data, and utilize this information for fault detection purposes.
- 
-A low pressure compressor (LPC) and high pressure compressor (HPC) supply compressed high temperature, high pressure gases to the combustor. Low pressure turbine (LPT) can 
-decelerate and pressurize air to improve the chemical energy conversion efficiency of aviation kerosene. High pressure turbines (HPT) generate mechanical energy by using high 
-temperature and high pressure gas strike turbine blades. Low-pressure rotor (N1), high-pressure rotor (N2), and nozzle guarantee the combustion efficiency of the engine.
-
-Our main focus will be on accurately recording low RUL values to prevent putting the engine at danger and forecasting the RUL of the turbofan engine while accounting for HPC 
-failure. Data analysis, data visualization and Model development are covered in this project</p>
-        
-        <form method="post" action="/handle_buttons">
-            <button type="submit" name="action" value="predict" style="position: absolute;
-    top: 300px;  right: 500px;
-    width: 180px;
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;">Predict RUL</button>
-        </form>
-    '''
+    return render_template('index.html')
 
 @app.route('/handle_buttons', methods=['POST'])
 def handle_buttons():
@@ -101,5 +74,9 @@ def handle_buttons():
         
         return render_template('BarChart.html', labels=labels, data=data)#, labels=labels, data=data)
 
+app.config['DEBUG']=os.environ.get('FLASK_DEBUG')
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+

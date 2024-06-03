@@ -1,18 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictive Maintenace of NASA Aircraft Engine</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <h1 style="width: 100%;text-align: center;">Predictive Maintenace of NASA Aircraft Engine</h1>
+{% extends 'base.html' %}
+{% block content %}
+    <h1 style="width: 100%;text-align: center;background-color:#342206;color:blanchedalmond;" class="p-2 my-0">Predictive Maintenance of NASA Aircraft Engine</h1>
 
-    <h2>Turbo Engine</h2>
-    <img src="{{ url_for('static', filename='turbofan.png') }}" alt="Your Image" style="width: 300px; height: auto;">
+    {% include 'navbar.html' %}
+    <br>
+    <h3 class="p-2 offset-2">Turbo Engine</h3>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <p>The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
+                maintenance behavior, this machine learning research will be focused on providing a framework for predicting the aircraft's remaining usable life (RUL) based on the whole life 
+                cycle data. Using the NASA C-MAPSS data set is implemented and tested to determine the engine lifetime.
+                
+                Tracking and predicting the progression of damage in aircraft engine turbo machinery has some roots in the work of Kurosaki. They estimate the efficiency and the flow rate deviation
+                of the compressor and the turbine based on operational data, and utilize this information for fault detection purposes.
+                 
+                A low pressure compressor (LPC) and high pressure compressor (HPC) supply compressed high temperature, high pressure gases to the combustor. Low pressure turbine (LPT) can 
+                decelerate and pressurize air to improve the chemical energy conversion efficiency of aviation kerosene. High pressure turbines (HPT) generate mechanical energy by using high 
+                temperature and high pressure gas strike turbine blades. Low-pressure rotor (N1), high-pressure rotor (N2), and nozzle guarantee the combustion efficiency of the engine.
+                
+                Our main focus will be on accurately recording low RUL values to prevent putting the engine at danger and forecasting the RUL of the turbofan engine while accounting for HPC 
+                failure. Data analysis, data visualization and Model development are covered in this project</p>
+                
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <img src="{{ url_for('static', filename='turbofan.png') }}" alt="Your Image" class="p-1 mx-5 rounded justify-content-center">
+        </div>
+        <div class="col-3">
+            <form method="post" action="/handle_buttons">
+                <br><br><br><br><br><br><br>
+                <button type="submit" name="action" value="predict" class="btn btn-success ">Predict RUL</button>
+            </form>
+        </div>
+       
+    </div>
 
-    <p>The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
+
+{% endblock  %}
+<!-- '''
+        <h1 style="width: 100%;text-align: center;">Predictive Maintenace of NASA Aircraft Engine</h1>
+        <img src="./static/turbofan.png" alt="Your Image" style="height: auto;">
+
+        <p style="font-size: 18px">The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
 maintenance behavior, this machine learning research will be focused on providing a framework for predicting the aircraft's remaining usable life (RUL) based on the whole life 
 cycle data. Using the NASA C-MAPSS data set is implemented and tested to determine the engine lifetime.
 
@@ -25,6 +55,5 @@ temperature and high pressure gas strike turbine blades. Low-pressure rotor (N1)
 
 Our main focus will be on accurately recording low RUL values to prevent putting the engine at danger and forecasting the RUL of the turbofan engine while accounting for HPC 
 failure. Data analysis, data visualization and Model development are covered in this project</p>
-
-</body>
-</html>
+        
+    ''' -->
