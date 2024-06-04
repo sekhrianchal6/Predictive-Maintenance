@@ -1,12 +1,17 @@
-<ul class="nav justify-content-center p-0" style="background-color:#342206;color:blanchedalmond;">
+<ul class="nav justify-content-center p-1 shadow" style="background-color:#000000;color:rgb(240, 239, 237)">
+  <li class="nav-item nav-underline">
+    <a class="nav-link p-1 mx-5 mukta-regular" style="color:rgb(240, 239, 237);" aria-current="page" href="{{url_for('index')}}">About</a>
+  </li>
     <li class="nav-item nav-underline">
-      <a class="nav-link p-2" style="color:blanchedalmond;"aria-current="page" href="#">View EDA</a>
+      <a class="nav-link p-1 mx-5 mukta-regular" style="color:rgb(240, 239, 237);" aria-current="page" href="{{url_for('eda')}}">View EDA</a>
     </li>
     <li class="nav-item nav-underline">
-      <a class="nav-link p-2" style="color:blanchedalmond;" href="#">Predict RUL</a>
+      <form method="post"  action="/handle_buttons">
+        <button class="nav-link p-1 mx-5 mukta-regular" type="submit" name="action" value="predict" style="color:rgb(240, 239, 237)">Predict RUL</button>
+      </form>
     </li>
     <li class="nav-item nav-underline">
-      <a class="nav-link p-2" style="color:blanchedalmond;" href="#">Meet the team</a>
+      <a class="nav-link p-1 mx-5 mukta-regular" style="color:rgb(240, 239, 237);" href="#">Meet the team</a>
     </li>
 
   </ul>

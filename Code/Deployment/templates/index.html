@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1 style="width: 100%;text-align: center;background-color:#342206;color:blanchedalmond;" class="p-2 my-0">Predictive Maintenance of NASA Aircraft Engine</h1>
-
-    {% include 'navbar.html' %}
+    
     <br>
-    <h3 class="p-2 offset-2">Turbo Engine</h3>
+    <h3 class="px-4 py-2 offset-1 mukta-medium">Turbo Engine</h3>
     <div class="row">
-        <div class="col-8 offset-2">
-            <p>The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
+        <div class="col-10 px-5 py-2 offset-1 ">
+            <p class="eb-garamond-light" style="text-align: justify;">The degradation that can occur to aircraft parts over the course of their lifetime directly impacts both their performance and reliability. In order to provide the necessary 
                 maintenance behavior, this machine learning research will be focused on providing a framework for predicting the aircraft's remaining usable life (RUL) based on the whole life 
                 cycle data. Using the NASA C-MAPSS data set is implemented and tested to determine the engine lifetime.
                 
@@ -24,15 +22,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-9">
-            <img src="{{ url_for('static', filename='turbofan.png') }}" alt="Your Image" class="p-1 mx-5 rounded justify-content-center">
+        <div class="col-10 px-5 offset-1">
+            <img src="{{ url_for('static', filename='turbofan.png') }}" alt="turbofan parts" class="p-5 rounded justify-content-center">
         </div>
-        <div class="col-3">
+        <!-- <div class="col-3">
             <form method="post" action="/handle_buttons">
                 <br><br><br><br><br><br><br>
                 <button type="submit" name="action" value="predict" class="btn btn-success ">Predict RUL</button>
             </form>
-        </div>
+        </div> -->
        
     </div>
 

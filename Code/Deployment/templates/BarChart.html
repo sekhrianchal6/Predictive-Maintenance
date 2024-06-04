@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-</head>
-<body>
-    <h1 style="width: 100%;text-align: center;">Predictive Maintenace of NASA Aircraft Engine</h1>
-	<h4>Remaining Useful Life Prediction<h4>
-	
-	<p>The NASA Aircraft Engine dataset has been extensively analyzed to predict the remaining useful life (RUL) using various machine learning and deep learning models. 
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+	<h4 class="px-4 offset-1 mukta-medium">Remaining Useful Life Prediction<h4>
+    <div class="row">
+        <div class="col-10 px-5 py-2 offset-1 ">
+            <p class='eb-garamond-light' style="text-align: justify;">The NASA Aircraft Engine dataset has been extensively analyzed to predict the remaining useful life (RUL) using various machine learning and deep learning models. 
 	Among the models tested, the Multilayer Perceptron (MLP), XGBoost, Long Short-Term Memory (LSTM), and a hybrid version of LSTM combined with Convolutional Neural Networks (CNN)
 	have shown particularly convincing results. These models have demonstrated superior performance in terms of accuracy and robustness in predicting RUL, making them standout 
 	choices for this application</p>
    
     <canvas id="barChart" style="width: 800px; height: 400px;  transform: scale(0.75);
     position: relative;"></canvas>
+        </div></div>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         // Get the data passed from Flask
@@ -64,5 +60,5 @@
             config
         );
     </script>
-</body>
-</html>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row p-5" >
+    <div class="col-sm-4 p-5 offset-2">
+      <div class="card">
+        <img src="static\chris-liverani-dBI_My696Rk-unsplash.jpg" class="card-img-top" style="height:auto;width:auto" >
+        <div class="card-body">
+          <h5 class="card-title mukta-medium">Descriptive Statistics</h5>
+          <p class="card-text eb-garamond-light">Get a basic understanding of the data.</p>
+          <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#desc_stat_modal">View</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-4 p-5">
+      <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+
+          <!-- Modal -->
+<div class="modal fade" id="desc_stat_modal" tabindex="-1" aria-labelledby="desc_stat_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="desc_stat_title">Descriptive statistics</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

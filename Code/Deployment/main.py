@@ -38,6 +38,10 @@ def preprocess(data):
 def index():
     return render_template('index.html')
 
+@app.route('/eda')
+def eda():
+    return render_template('eda.html')
+
 @app.route('/handle_buttons', methods=['POST'])
 def handle_buttons():
     action = request.form['action']
@@ -73,6 +77,9 @@ def handle_buttons():
         data = [pred[0,0], pred2[0], pred3[0], pred4[0,0]]
         
         return render_template('BarChart.html', labels=labels, data=data)#, labels=labels, data=data)
+
+
+
 
 app.config['DEBUG']=os.environ.get('FLASK_DEBUG')
 
