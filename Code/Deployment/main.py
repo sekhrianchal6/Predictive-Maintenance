@@ -42,6 +42,10 @@ def index():
 def eda():
     return render_template('eda.html')
 
+@app.route('/team')
+def team():
+    return render_template('team.html')
+
 @app.route('/handle_buttons', methods=['POST'])
 def handle_buttons():
     action = request.form['action']

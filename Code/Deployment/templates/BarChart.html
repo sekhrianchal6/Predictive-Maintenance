@@ -2,6 +2,7 @@
 {% block content %}
     <br>
 	<h4 class="px-4 offset-1 mukta-medium">Remaining Useful Life Prediction<h4>
+    <div class="container">
     <div class="row">
         <div class="col-10 px-5 py-2 offset-1 ">
             <p class='eb-garamond-light' style="text-align: justify;">The NASA Aircraft Engine dataset has been extensively analyzed to predict the remaining useful life (RUL) using various machine learning and deep learning models. 
@@ -11,7 +12,9 @@
    
     <canvas id="barChart" style="width: 800px; height: 400px;  transform: scale(0.75);
     position: relative;"></canvas>
-        </div></div>
+        </div>
+    </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -22,38 +25,58 @@
             labels: labels,
             datasets: [{
                 label: 'RUL of last sample',
-                backgroundColor: 'rgb(75, 192, 192)',
-                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: '#0c2a59',
+                
                 data: {{ data | safe }},
             }]
         };
 
         const config = {
-            type: 'bar',
-            data: data,
-            options: {
-			 plugins: {
-                datalabels: {
-                    anchor: 'end',
-                    align: 'start',
-                    color: 'black',
+    type: 'bar',
+    data: data,
+    options: {
+        plugins: {
+            datalabels: {
+                anchor: 'start',
+                align: 'start',
+                color: 'white',
+                font: {
+                    weight: 'bold',
+                    size: 15
+                },
+                formatter: function(value, context) {
+                    return value;
+                }
+            },
+            legend: {
+                labels: {
                     font: {
-                        weight: 'bold'
-                    },
-                    formatter: function(value, context) {
-                        return value;
+                        size: 22
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        size: 24
                     }
                 }
             },
-                scales: {
-                    y: {
-                        beginAtZero: true
+            x: {
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        size: 29
                     }
                 }
-            },
-			plugins: [ChartDataLabels]
-
-        };
+            }
+        }
+    },
+    plugins: [ChartDataLabels]
+};
 
         var myBarChart = new Chart(
             document.getElementById('barChart'),
