@@ -62,3 +62,31 @@ body {
   color: #555;
 }
   
+.grey-bg {  
+  background-color: #F5F7FA;
+}
+.modal{
+  width: 80%;
+ margin-left:80px;
+ 
+}
+.modal-body{
+  width: 80%;
+  margin: auto;
+  overflow-x: scroll;
+}
+
+.click-zoom input[type=checkbox] {
+  display: none
+}
+
+.click-zoom img {
+  margin: 20px;
+  
+  cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(4);
+  cursor: zoom-out
+}

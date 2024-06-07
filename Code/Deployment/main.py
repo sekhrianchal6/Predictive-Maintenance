@@ -22,6 +22,7 @@ pca = pickle.load(open('pca.sav', 'rb'))
 data = pd.read_csv('Modified_Raw.csv')
 # Transform data for LSTM Model
 inp_data = data.dropna()
+eda_data=pd.read_csv('train_FD001.csv')
 
 
 def preprocess(data):
@@ -38,9 +39,20 @@ def preprocess(data):
 def index():
     return render_template('index.html')
 
+def get_shape(data):
+    rows=data.shape[0]
+    col=data.shape[1]
+    
+    
+    return rows,col
+    
 @app.route('/eda')
 def eda():
-    return render_template('eda.html')
+    rows,col=get_shape(eda_data)
+    df_head=eda_data.head()
+    df_describe=eda_data.describe().T
+
+    return render_template('eda.html',rows=rows,col=col,tables=[df_head.to_html(classes="table table-stripped")],titles=df_head.columns.values,desc_tables=[df_describe.to_html(classes="table table-stripped")],desc_titles=df_describe.columns.values)
 
 @app.route('/team')
 def team():
