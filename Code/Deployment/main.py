@@ -6,7 +6,11 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 import io
 import matplotlib.pyplot as plt
+import plotly.express as px
 from dotenv import load_dotenv
+from plotly import utils
+from json import dumps
+
 load_dotenv()
 
 
@@ -23,7 +27,7 @@ data = pd.read_csv('Modified_Raw.csv')
 # Transform data for LSTM Model
 inp_data = data.dropna()
 eda_data=pd.read_csv('train_FD001.csv')
-
+pd.DataFrame.iteritems = pd.DataFrame.items
 
 def preprocess(data):
     # Exponential Weighted Mean on Test Data
@@ -51,12 +55,26 @@ def eda():
     rows,col=get_shape(eda_data)
     df_head=eda_data.head()
     df_describe=eda_data.describe().T
-
-    return render_template('eda.html',rows=rows,col=col,tables=[df_head.to_html(classes="table table-stripped")],titles=df_head.columns.values,desc_tables=[df_describe.to_html(classes="table table-stripped")],desc_titles=df_describe.columns.values)
+    figure=parallel_coord(eda_data)
+    
+    return render_template('eda.html',rows=rows,col=col,tables=[df_head.to_html(classes="table table-stripped")],titles=df_head.columns.values,desc_tables=[df_describe.to_html(classes="table table-stripped")],desc_titles=df_describe.columns.values,figure=figure)
 
 @app.route('/team')
 def team():
     return render_template('team.html')
+
+def parallel_coord(data):
+    print(type(data))
+    fig = px.parallel_coordinates(data.iloc[:,2:], color="Remaining Cycles",
+                                color_continuous_scale=px.colors.diverging.delta_r,
+                                color_continuous_midpoint=2,width=1200,height=1200,labels={'Sensor1':'S1', 'Sensor2':'S2', 'Sensor3':'S3', 'Sensor4':'S4',
+        'Sensor5':'S5', 'Sensor6':'S6', 'Sensor7':'S7', 'Sensor8':'S8', 'Sensor9':'S9', 'Sensor10':'S10',
+        'Sensor11':'S11', 'Sensor12':'S12', 'Sensor13':'S13', 'Sensor14':'S14', 'Sensor15':'S15', 'Sensor16':'S16',
+        'Sensor17':'S17', 'Sensor18':'S18', 'Sensor19':'S19', 'Sensor20':'S20', 'Sensor21':'S21', 'Sensor22':'S22',
+        'Sensor23':'S23', 'Sensor24':'S24', 'Remaining Cycles':'RC'})
+    json_fig=dumps(fig,cls=utils.PlotlyJSONEncoder)
+
+    return json_fig
 
 @app.route('/handle_buttons', methods=['POST'])
 def handle_buttons():

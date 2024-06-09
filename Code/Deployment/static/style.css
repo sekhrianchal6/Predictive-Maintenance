@@ -4,6 +4,12 @@
     font-style: normal;
     font-size: large;
   }
+  .mukta-regular-b {
+    font-family: "Mukta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: large;
+  }
   
   .mukta-medium {
     font-family: "Mukta", sans-serif;
@@ -28,7 +34,13 @@
     font-style: normal;
     font-size:x-large;
   }
-
+  .eb-garamond-light-s{
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size:large;
+  }
 /*
 *
 * ==========================================
