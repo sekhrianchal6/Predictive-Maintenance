@@ -25,7 +25,9 @@
     font-size: xx-large;
   }
   
-
+  table th {
+    width: auto !important;
+}
   
   .eb-garamond-light {
     font-family: "EB Garamond", serif;

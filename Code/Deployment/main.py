@@ -27,7 +27,7 @@ data = pd.read_csv('Modified_Raw.csv')
 # Transform data for LSTM Model
 inp_data = data.dropna()
 eda_data=pd.read_csv('train_FD001.csv')
-pd.DataFrame.iteritems = pd.DataFrame.items
+pd.DataFrame.iteritems = pd.DataFrame.items  #to replace the use of a deprecated feature of pandas in plotly(iteritems is deprecated)
 
 def preprocess(data):
     # Exponential Weighted Mean on Test Data

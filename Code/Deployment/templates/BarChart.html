@@ -5,7 +5,8 @@
     <div class="container">
     <div class="row">
         <div class="col-10 px-5 py-2 offset-1 ">
-            <p class='eb-garamond-light' style="text-align: justify;">The NASA Aircraft Engine dataset has been extensively analyzed to predict the remaining useful life (RUL) using various machine learning and deep learning models. 
+            <p class='eb-garamond-light' style="text-align: justify;">
+                <br>The NASA Aircraft Engine dataset has been extensively analyzed to predict the remaining useful life (RUL) using various machine learning and deep learning models. 
 	Among the models tested, the Multilayer Perceptron (MLP), XGBoost, Long Short-Term Memory (LSTM), and a hybrid version of LSTM combined with Convolutional Neural Networks (CNN)
 	have shown particularly convincing results. These models have demonstrated superior performance in terms of accuracy and robustness in predicting RUL, making them standout 
 	choices for this application</p>
@@ -14,6 +15,56 @@
     position: relative;"></canvas>
         </div>
     </div>
+</div>
+<div class="container text-center">
+    <table class="table table-hover table-dark rounded w-75 mx-auto">
+        <thead>
+            <tr>
+              <th scope="col ">#</th>
+              <th scope="col px-3">Model</th>
+              <th scope="col  px-3">Test RMSE</th>
+              <th scope="col px-3">Test R2 Score</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr class="mukta-regular-b">
+              <th scope="row">1</th>
+              <td>Linear Regression</td>
+              <td>43.18</td>
+              <td>0.46</td>
+            </tr>
+            <tr class="mukta-regular-b">
+                <th scope="row">2</th>
+                <td>Random Forest</td>
+                <td>6.68</td>
+                <td>0.42</td>
+            </tr>
+            <tr class="mukta-regular-b">
+                <th scope="row">3</th>
+                <td>XG Boost</td>
+                <td>17.35</td>
+                <td>0.65</td>
+            </tr>
+            <tr class="mukta-regular-b">
+                <th scope="row">4</th>
+                <td>Multilayer Perceptron</td>
+                <td>4.51</td>
+                <td>0.52</td>
+              </tr>
+              <tr class="mukta-regular-b">
+                <th scope="row">5</th>
+                <td>LSTM</td>
+                <td>15.93</td>
+                <td>0.75</td>
+              </tr>
+              <tr class="mukta-regular-b">
+                <th scope="row">6</th>
+                <td>CNN + LSTM</td>
+                <td>13.34</td>
+                <td>0.86</td>
+              </tr>
+          </tbody>
+      </table>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

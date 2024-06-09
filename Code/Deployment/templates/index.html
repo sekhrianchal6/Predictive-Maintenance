@@ -37,6 +37,17 @@
        
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-10 px-5 py-2 offset-1 ">
+            <p class="eb-garamond-light" style="text-align: justify;">
+    In the dataset, each time series is from a different engine i.e., the data can be considered to be from a fleet of engines of the same type. Each engine starts with different degrees of initial wear and manufacturing variation which is unknown to the user. This wear and variation is considered normal, i.e., it is not considered a fault condition. The data is contaminated with sensor noise. The engine is operating normally at the start of each time series, and develops a fault at some point during the series. In the training set, the fault grows in magnitude until system failure. In the test set, the time series ends some time prior to system failure. The objective of the competition is to predict the number of remaining operational cycles before failure in the test set, i.e., the number of operational cycles after the last cycle that the engine will continue to operate. Also provided a vector of true Remaining Useful Life (RUL) values for the test data.
+CMAPSS Dataset: The data contains 26 columns of numbers, where each row is a snapshot of data taken during a single operational cycle. The columns corresponds to Engine ID, Time in Cycles, Setting1, Setting2, Setting3 and remaining all are sensor data. 
+Target RUL: The target variable is not explicitly provided in the dataset; therefore, it is inherently calculated by subtracting the number of cycles from the maximum cycle for the corresponding engine. This results in the creation of a new column labelled "Remaining Cycles," which represents the Remaining Useful Life (RUL) of the engine. The health of a system degrades linearly along with time. In practical applications, degradation of a component is negligible at the beginning of use, and increases when component approaches end-of-Life. 
+            </p>
+        </div>
+    </div>
+</div>
 
 {% endblock  %}
 <!-- '''
