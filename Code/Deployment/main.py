@@ -24,6 +24,9 @@ model4 = pickle.load(open('CNN_LSTM.pkl', 'rb'))
 scaler = pickle.load(open('scaler.sav', 'rb'))
 pca = pickle.load(open('pca.sav', 'rb'))
 data = pd.read_csv('Modified_Raw.csv')
+
+rul = data['RUL'] #Actual remaining useful life of test samples
+data.drop('RUL', axis = 1, inplace=True)
 # Transform data for LSTM Model
 inp_data = data.dropna()
 eda_data=pd.read_csv('train_FD001.csv')
@@ -81,6 +84,7 @@ def handle_buttons():
     action = request.form['action']
     if action == 'predict':
         # Placeholder for predict action
+        rul_val = rul.iloc[-1] # Actual Remaining Useful Life of last sample
         #LSTM predict
         
         data = preprocess(inp_data.drop('Cycles', axis=1))
