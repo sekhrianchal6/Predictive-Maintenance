@@ -13,6 +13,8 @@
    
     <canvas id="barChart" style="width: 800px; height: 400px;  transform: scale(0.75);
     position: relative;"></canvas>
+            <p class='eb-garamond-light mx-5' style="text-align: justify;">The actual RUL  value of the datapoint that was used for this prediction was <b>{{rul}}</b></p>
+
         </div>
     </div>
 </div>
@@ -101,8 +103,10 @@
             },
             legend: {
                 labels: {
+                    color:'black',
                     font: {
                         size: 22
+                        
                     }
                 }
             }
@@ -111,14 +115,17 @@
             y: {
                 beginAtZero: true,
                 ticks: {
+                    color:'black',
                     font: {
                         size: 24
+
                     }
                 }
             },
             x: {
                 beginAtZero: true,
                 ticks: {
+                    color:'black',
                     font: {
                         size: 29
                     }

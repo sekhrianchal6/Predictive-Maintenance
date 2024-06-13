@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from plotly import utils
 from json import dumps
 
+
 load_dotenv()
 
 
@@ -112,9 +113,9 @@ def handle_buttons():
         
         #print(pred)
         labels = ['LSTM', 'MLP', 'XGBoost', 'CNN+LSTM']
-        data = [pred[0,0], pred2[0], pred3[0], pred4[0,0]]
+        data = [round(pred[0,0],2), round(pred2[0],2), round(pred3[0],2), round(pred4[0,0],2)]
         
-        return render_template('BarChart.html', labels=labels, data=data)#, labels=labels, data=data)
+        return render_template('BarChart.html', labels=labels, data=data,rul=rul_val)#, labels=labels, data=data)
 
 
 
